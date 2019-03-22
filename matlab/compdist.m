@@ -1,13 +1,13 @@
-function dist = compdist(user1, user2)
+function distvec = compdist(user1, user2)
 
-l = length(user1);
-diff = zeros(1, l);
+normalize = @(u) u/2 + 50;
 
-for i = 1:l
-    diff(i) = abs(user1(i) - user2(i));
-end
+u1norm = normalize(user1);
+u2norm = normalize(user2);
 
-% посчитать похожесть по каждой координате
-% посчитать общую похожесть
-dist = rand;
+mlgs = @(x) 1./(1+exp(-x));
+mlgsn = @(x) mlgs(x/10 - 5) * 100;
+mlgs2d = @(x, y) mlgsn(min(x, y));
+
+distvec = mlgs2d(u1norm, u2norm);
 end
