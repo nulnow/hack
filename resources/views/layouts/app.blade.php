@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Pinder</title>
+    <title>Pinder.ru</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -65,49 +65,36 @@
                         </button>
                     </div>
                     <div class="nav__item nav__logo">
-                        <h3>АлкоTinder</h3>
+                        <h3>Pinder.ru</h3>
                     </div>
                 </div>
                 <div class="nav-middle">
                 </div>
                 <div class="nav-right">
                     <div class="navigation-menu">
-                        <div class="navigation-menu-item">Кек</div>
-                        <div class="navigation-menu-item">Новости</div>
-                        <div class="navigation-menu-item">Контакты</div>
+                        @guest
+                            <div class="navigation-menu-item"><a href="{{ route('login') }}">Вход</a></div>
+                            <div class="navigation-menu-item"><a href="{{ route('register') }}">Регистрация</a></div>
+                        @else
+                            <div class="navigation-menu-item"><a href="{{ route('updatePreferences') }}">Профиль</a></div>
+                            <div class="navigation-menu-item">Новости</div>
+                            <div class="navigation-menu-item">Выход</div>
+                        @endguest
                     </div>
                 </div>
             </div>
         </nav>
         <nav class="nav-mini">
             <div class="nav-mini-container">
-                <div class="nav-mini-content">
-                    <div class="hot-news-wrapper">
-                        <div class="hot-news">
-                            <button class="hot-news__item">Кек</button>
-                            <button class="hot-news__item">Новости</button>
-                            <button class="hot-news__item">Контакты</button>
-                        </div>
-                    </div>
-                </div>
                 <div class="nav-mini-footer">
-                    <div class="nav-mini-left">
-                        <div class="nav__item">
-                            <div class="nav__item">
-                                <button class="nav__item-btn" id="menu-min">
-                                    <i class="nav__item-icon material-icons">menu</i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="nav-mini-right">
                         <button class="mini-logo" id="search-mini-bar">
                             AлкоTinder
                         </button>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
         <br>
