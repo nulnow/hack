@@ -51,6 +51,11 @@
 
         </script>
     @endif
+    <style>
+        h3 {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -110,7 +115,7 @@
             </div>
         @endif
 
-        <main class="py-4" style="margin-top: 64px">
+        <main style="margin-top: 41px">
             @yield('content')
         </main>
     </div>

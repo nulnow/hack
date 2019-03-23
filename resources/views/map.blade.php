@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="meet">
@@ -114,7 +114,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="button _chat">Начать чат</a>
                     </div>
                 </div>
             </div>
