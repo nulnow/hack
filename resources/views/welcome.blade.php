@@ -1,89 +1,61 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-
+@section('content')
+<div class="main">
+            <div class="main-wrapper">
+                <div class="body-render">
+                    <div class="main-start-container">
+                        <div id="menui" class="main-start-container-wrapper">
+                            <div class="container">
+                                <h1>Lorem ipsum dolor sit.</h1>
+                                <h2>Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing
+                                    elit.</h2>
+                                <br>
+                                <br>
+                                <a href="#search" class="main-btn">Найти!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="search" class="main-middle-container">
+                        <div class="main-middle-container-wrapper">
+                            <div class="main-middle-left">
+                                <div class="choose-item">
+                                    <img class="choose-item-image" />
+                                    <br>
+                                    <h4 class="choose-item-title">Lorem ipsum
+                                        dolor
+                                        sit.</h4>
+                                    <h5 class="choose-item-description">Lorem
+                                        ipsum
+                                        dolor sit amet, consectetur adipisicing
+                                        elit. A sapiente laboriosam numquam
+                                        veniam
+                                        consequatur, accusamus asperiores in
+                                        voluptatem! Placeat, dicta.</h5>
+                                </div>
+                            </div>
+                            <div class="main-middle-right">
+                                <div class="choose-item">
+                                    <img class="choose-item-image" />
+                                    <br>
+                                    <h4 class="choose-item-title">Lorem ipsum
+                                        dolor
+                                        sit.</h4>
+                                    <h5 class="choose-item-description">Lorem
+                                        ipsum
+                                        dolor sit amet, consectetur adipisicing
+                                        elit. A sapiente laboriosam numquam
+                                        veniam
+                                        consequatur, accusamus asperiores in
+                                        voluptatem! Placeat, dicta.</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+@endsection

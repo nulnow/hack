@@ -7,8 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Pinder
-    ') }}</title>
+    <title>Pinder</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,6 +23,9 @@
     <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://js.cit.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" ></script>
     <script src="https://js.cit.api.here.com/v3/3.0/mapsjs-places.js" type="text/javascript" ></script>
+
+    <script src="../design/start/script/start.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../design/start/script/media.js" type="text/javascript" charset="utf-8"></script>
 
     @if (Auth::check())
         <script>
@@ -52,62 +54,61 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Pinder') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('updatePreferencesForm') }}">
-                                        Изменить предпочтения
-                                    </a>
-                                </div>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Выйти
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+        
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-left">
+                    <div class="nav__item">
+                        <button class="nav__item-btn menuID">
+                            <i class="nav__item-icon material-icons">menu</i>
+                        </button>
+                    </div>
+                    <div class="nav__item nav__logo">
+                        <h3>АлкоTinder</h3>
+                    </div>
+                </div>
+                <div class="nav-middle">
+                </div>
+                <div class="nav-right">
+                    <div class="navigation-menu">
+                        <div class="navigation-menu-item">Кек</div>
+                        <div class="navigation-menu-item">Новости</div>
+                        <div class="navigation-menu-item">Контакты</div>
+                    </div>
                 </div>
             </div>
         </nav>
+        <nav class="nav-mini">
+            <div class="nav-mini-container">
+                <div class="nav-mini-content">
+                    <div class="hot-news-wrapper">
+                        <div class="hot-news">
+                            <button class="hot-news__item">Кек</button>
+                            <button class="hot-news__item">Новости</button>
+                            <button class="hot-news__item">Контакты</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-mini-footer">
+                    <div class="nav-mini-left">
+                        <div class="nav__item">
+                            <div class="nav__item">
+                                <button class="nav__item-btn" id="menu-min">
+                                    <i class="nav__item-icon material-icons">menu</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-mini-right">
+                        <button class="mini-logo" id="search-mini-bar">
+                            AлкоTinder
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
 
         <br>
 
@@ -122,7 +123,7 @@
             </div>
         @endif
 
-        <main class="py-4">
+        <main class="py-4" style="margin-top: 64px">
             @yield('content')
         </main>
     </div>
