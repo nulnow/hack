@@ -45,7 +45,7 @@
 
         #map-me {
             width: 100%;
-            height: 200px;
+            height: 300px;
         }
     </style>
 
@@ -71,6 +71,36 @@
                 <label for="formControlRange">Прогулки</label>
                 <input type="range" name="walking" id="walking" class="form-control-range" value="{{ $preferences['walking'] }}" min="-100" max="100">
             </div>
+            <p>Ваш пол:</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="genderM" value="m" {{ $preferences['gender'] === 'm' ? 'checked' : '' }}>
+                <label class="form-check-label" for="genderM">Мужчина</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="genderF" value="f" {{ $preferences['gender'] === 'f' ? 'checked' : '' }}>
+                <label class="form-check-label" for="genderF">Женщина</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="genderN" value="n" {{ $preferences['gender'] === 'n' ? 'checked' : '' }}>
+                <label class="form-check-label" for="genderN">Нет</label>
+            </div>
+            <br>
+            <br>
+            <p>Кого ищем:</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="lookingFor" id="lookingForM" value="m" {{ $preferences['lookingFor'] === 'm' ? 'checked' : '' }}>
+                <label class="form-check-label" for="lookingForM">Мужчин</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="lookingFor" id="lookingForF" value="f" {{ $preferences['lookingFor'] === 'f' ? 'checked' : '' }}>
+                <label class="form-check-label" for="lookingForF">Женщин</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="lookingFor" id="lookingForA" value="a" {{ $preferences['lookingFor'] === 'a' ? 'checked' : '' }}>
+                <label class="form-check-label" for="lookingForA">Не важно</label>
+            </div>
+            <br>
+            <br>
             <div class="form-group">
                 <label for="formControlRange">Ваше местоположение</label>
                 <div id="map-me"></div>

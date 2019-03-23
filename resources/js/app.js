@@ -23,10 +23,40 @@ function onFormSubmit(event) {
     var walking = $('#walking').val();
     var coords = $('#real-coords-input').val();
 
+    var gender = 'n';
+
+    if ($('#genderM').prop('checked')) {
+        gender = 'm';
+    }
+
+    if ($('#genderF').prop('checked')) {
+        gender = 'f';
+    }
+
+    if ($('#genderN').prop('checked')) {
+        gender = 'n';
+    }
+
+    var lookingFor = 'a';
+
+    if ($('#lookingForM').prop('checked')) {
+        lookingFor = 'm';
+    }
+
+    if ($('#lookingForF').prop('checked')) {
+        lookingFor = 'f';
+    }
+
+    if ($('#lookingForA').prop('checked')) {
+        lookingFor = 'a';
+    }
+
     var body = JSON.stringify({
         cinema,
         food,
         walking,
+        gender,
+        lookingFor,
         coords: JSON.parse(coords)
     });
 
@@ -34,14 +64,21 @@ function onFormSubmit(event) {
         cinema,
         food,
         walking,
+        coords,
+        gender,
+        lookingFor,
         coords: JSON.parse(coords)
     }, {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(_ => {
+    }).then(response => {
+        console.log(response)
         window.location = '/home';
-    })
+    }).catch(error => {
+        console.log('error')
+        console.log(error)
+    });
 
 }
 $('#mform').submit(onFormSubmit);

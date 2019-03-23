@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             $user = new \App\User();
             $user->name = $faker->name;
             $user->email = $faker->email;
-            $user->password = Hash::make(str_random(20));
+            $user->password = Hash::make('secret');
 
             $lat = rand(10000, 99999);
             $lng = rand(10000, 99999);
@@ -39,7 +39,9 @@ class DatabaseSeeder extends Seeder
                 'coords' => [ // 33005, 30.344047
                     'lat' => "59.9$lat",
                     'lng' => "30.3$lng"
-                ]
+                ],
+                'gender' => ['m', 'f', 'n'][rand(0,2)],
+                'lookingFor' => ['m', 'f', 'a'][rand(0,2)]
             ]);
 
             $user->save();

@@ -1,0 +1,311 @@
+* {
+    padding: 0;
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+.meet {
+    width: 100%;
+    height: 100%;
+}
+
+.meet-wrapper {
+    width: 100%;
+    height: 100%;
+
+    overflow-y: auto;
+
+    display: grid;
+
+    grid-template-columns: 256px 1fr 256px;
+
+    grid-template-areas: "you map apponent";
+}
+
+.people-name,
+.people-preview {
+    margin-bottom: 8px;
+}
+
+.map-info-title,
+.people-name {
+    font-size: 14pt;
+}
+
+.map-info-description,
+.people-status {
+    color: grey;
+}
+
+.people {
+    width: 100%;
+    height: 100vh;
+    height: min-content;
+    z-index: 100;
+    box-shadow: 0 6px 6px -3px rgba(0,0,0,.2), 0 10px 14px 1px rgba(0,0,0,.14), 0 4px 18px 3px rgba(0,0,0,.12);
+}
+
+.people-wrapper {
+    padding: 16px;
+
+    height: 100vh;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.people-preview {
+    display: flex;
+
+    width: 100%;
+    height: 128px;
+
+    border-radius: 8px;
+
+    object-fit: cover;
+
+    background-color: grey;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    background-color: grey;
+
+    background: url('https://ak9.picdn.net/shutterstock/videos/24874859/thumb/1.jpg');
+}
+
+.map-info {
+    width: 100%;
+    height: min-content;
+
+    border-radius: 8px;
+
+    background-color: #fff;
+
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.map-info-wrapper {
+    display: flex;
+    
+    justify-content: space-between;
+}
+
+.map,
+.map-info-wrapper {
+    padding: 16px;
+
+    box-sizing: border-box;
+}
+
+.btn-container,
+.map-info-wrapper {
+    display: flex;
+
+    flex-direction: row;
+}
+
+.map-info-title {
+    margin-bottom: 8px;
+}
+
+.button {
+    display: flex;
+
+    text-decoration: none;
+    outline: none;
+
+    padding: 16px;
+
+    box-sizing: border-box;
+
+    align-items: center;
+
+    color: grey;
+
+    border-radius: 8px;
+
+    border: 1px solid grey;
+
+    font-weight: bold;
+}
+
+._go {
+    background-color: #f50057;
+
+    color: #fff;
+
+    border: 1px solid #fff;
+}
+
+.people-interests {
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 8px 0;
+}
+
+.people-interests-item-title {
+    margin-bottom: 8px;
+}
+
+.people-interests-item {
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 8px 0;
+}
+
+.people-interests-scale {
+    width: 100%;
+    height: 24px;
+
+    padding: 2px;
+
+    box-sizing: content-box;
+
+    background-color: #fff;
+
+    border-radius: 4px;
+
+    border: 1px solid grey;
+
+    margin-right: 8px;
+}
+
+._active {
+    height: 100%;
+
+    border-radius: 4px;
+
+    background-color: #f50057;
+}
+
+.interest-container {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+}
+
+.gender,
+._chat {
+    color: #f50057;
+
+    background-color: #fff;
+
+    display: flex;
+
+    justify-content: center;
+
+    border: 1px solid #f50057;
+
+    bottom: 0;
+
+    transition: .2s;
+}
+
+._chat:active {
+    color: #fff;
+
+    transition: .2s;
+
+    background-color: #f50057;
+
+    border: 1px solid #f50057;
+}
+
+.gender {
+    width: 100%;
+
+    border-radius: 4px;
+
+    padding: 4px;
+
+    margin: 8px 0;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.splitter {
+    border-top: 1px solid #bdbdbd;
+    margin: 32px 0; 
+}
+
+.apponent {
+    display: grid;
+
+    grid-area: apponent;
+}
+
+.you {
+    display: grid;
+
+    grid-area: you;
+}
+
+.map-area {
+    display: grid;
+
+    grid-area: map;
+}
+
+@media screen and (max-width: 1024px) {
+    .meet-wrapper {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: "map" "apponent";
+    }
+
+    .people {
+        box-shadow: none;
+    }
+
+    .you {
+        display: none;
+    }
+    
+    .map-area {
+        height: -webkit-fill-available;
+    }
+}

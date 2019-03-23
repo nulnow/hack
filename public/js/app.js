@@ -61219,6 +61219,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -61240,23 +61242,59 @@ function onFormSubmit(event) {
   var food = $('#food').val();
   var walking = $('#walking').val();
   var coords = $('#real-coords-input').val();
+  var gender = 'n';
+
+  if ($('#genderM').prop('checked')) {
+    gender = 'm';
+  }
+
+  if ($('#genderF').prop('checked')) {
+    gender = 'f';
+  }
+
+  if ($('#genderN').prop('checked')) {
+    gender = 'n';
+  }
+
+  var lookingFor = 'a';
+
+  if ($('#lookingForM').prop('checked')) {
+    lookingFor = 'm';
+  }
+
+  if ($('#lookingForF').prop('checked')) {
+    lookingFor = 'f';
+  }
+
+  if ($('#lookingForA').prop('checked')) {
+    lookingFor = 'a';
+  }
+
   var body = JSON.stringify({
     cinema: cinema,
     food: food,
     walking: walking,
+    gender: gender,
+    lookingFor: lookingFor,
     coords: JSON.parse(coords)
   });
-  axios.post('/update-preferences', {
+  axios.post('/update-preferences', _defineProperty({
     cinema: cinema,
     food: food,
     walking: walking,
-    coords: JSON.parse(coords)
-  }, {
+    coords: coords,
+    gender: gender,
+    lookingFor: lookingFor
+  }, "coords", JSON.parse(coords)), {
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(function (_) {
+  }).then(function (response) {
+    console.log(response);
     window.location = '/home';
+  }).catch(function (error) {
+    console.log('error');
+    console.log(error);
   });
 }
 
