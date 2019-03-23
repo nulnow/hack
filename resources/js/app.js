@@ -242,7 +242,7 @@ if ("geolocation" in navigator) {
         var mapEvents = new H.mapevents.MapEvents(map);
         var behavior = new H.mapevents.Behavior(mapEvents);
 
-        navigator.geolocation.getCurrentPosition(function(position) {
+        //navigator.geolocation.getCurrentPosition(function(position) {
 
             var userLat = user.options_json.coords.lat;
             var userLng = user.options_json.coords.lng;
@@ -258,6 +258,8 @@ if ("geolocation" in navigator) {
 
             map.addObject(crushMarker);
             map.addObject(userMarker);
+
+                 
 
             users.forEach(usersUser => {
                 var lt = usersUser.options_json.coords.lat;
@@ -386,7 +388,7 @@ if ("geolocation" in navigator) {
             search.request(params, {}, onResult, onError);
         */
 
-        });
+        //});
 
     }
 
