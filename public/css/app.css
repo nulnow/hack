@@ -800,7 +800,8 @@ h3 {
 .main-start-container {
     height: calc(100vh);
 
-    background: url(https://s.hi-news.ru/wp-content/uploads/2018/01/alcohol.jpg);
+    /*background: url(https://s.hi-news.ru/wp-content/uploads/2018/01/alcohol.jpg);*/
+    background-color: #b6b6b6;
 }
 
 .main-start-container-wrapper {
@@ -943,7 +944,8 @@ h3 {
     padding: 0 16px;
 
     font-size: 20pt;
-}.menu {
+}
+.menu {
     grid-area: nav;
   
     width: 271px;

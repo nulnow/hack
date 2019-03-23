@@ -133,6 +133,31 @@ class HomeController extends Controller
 
         return \App\User::find($maxRow[0]);
     }
+
+    public function invites()
+    {
+        $user = Auth::user();
+        $invites = \App\Invite::where('to', $user->id)->get();
+        return view('invites')->withInvites($invites);
+    }
+
+    public function invite(\App\Invite $invite)
+    {
+        $user = Auth::user();
+        $options = \json_decode($user->options_json);
+        $gender = $options->gender;
+        $genderText = '???';
+
+
+        if ($gender === 'm') $genderText = 'Мужской';
+        if ($gender === 'f') $genderText = 'Женский';
+        if ($gender === 'n') $genderText = 'Нет';
+
+        return view('invite')
+            ->withInvite($invite)
+            ->withUser($user)
+            ->withGenderText($genderText);
+    }
 }
 
 function diff($i, $j) {

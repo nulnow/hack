@@ -24,9 +24,6 @@
     <script src="https://js.cit.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" ></script>
     <script src="https://js.cit.api.here.com/v3/3.0/mapsjs-places.js" type="text/javascript" ></script>
 
-    <script src="../design/start/script/start.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../design/start/script/media.js" type="text/javascript" charset="utf-8"></script>
-
     @if (Auth::check())
         <script>
 
@@ -81,21 +78,10 @@
                             <div class="navigation-menu-item"><a href="{{ route('login') }}">Вход</a></div>
                             <div class="navigation-menu-item"><a href="{{ route('register') }}">Регистрация</a></div>
                         @else
-                            <div class="navigation-menu-item"><a href="{{ route('updatePreferences') }}">Профиль</a></div>
-                            <div class="navigation-menu-item">Новости</div>
+                            <div class="navigation-menu-item"><a href="{{ route('updatePreferences') }}">Профиль <small>({{ Auth::user()->name }})</small> </a></div>
+                            <div class="navigation-menu-item"><a href="{{ route('invites') }}">Приглашения</a></div>
                             <div class="navigation-menu-item">Выход</div>
                         @endguest
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <nav class="nav-mini">
-            <div class="nav-mini-container">
-                <div class="nav-mini-footer">
-                    <div class="nav-mini-right">
-                        <button class="mini-logo" id="search-mini-bar">
-                            AлкоTinder
-                        </button>
                     </div>
                 </div>
             </div>
