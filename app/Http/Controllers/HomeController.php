@@ -37,8 +37,15 @@ class HomeController extends Controller
             $preferences = [
                 'cinema' => 0,
                 'food' => 0,
-                'walking' => 0
+                'walking' => 0,
             ];
+        }
+
+        if (!array_key_exists('coords', $preferences)) {
+            $preferences['coords'] = \json_encode([
+                'lat' => 59.933005,
+                'lng' => 30.344047
+            ]);
         }
 
         return view('updatePreferencesForm', [
@@ -60,7 +67,8 @@ class HomeController extends Controller
         $options = \json_encode([
             'cinema' => $request->input('cinema'),
             'food' => $request->input('food'),
-            'walking' => $request->input('walking')
+            'walking' => $request->input('walking'),
+            'coords' => $request->input('coords')
         ]);
 
         $user->options_json = $options;

@@ -19,6 +19,36 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.cit.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" ></script>
+    <script src="https://js.cit.api.here.com/v3/3.0/mapsjs-places.js" type="text/javascript" ></script>
+
+    @if (Auth::check())
+        <script>
+
+            var user = <?php
+
+                $user = Auth::user();
+                $user->options_json = \json_decode($user->options_json);
+
+                echo \json_encode($user);
+
+                ?>;
+
+            var users = <?php
+
+                $users = \App\User::all();
+                foreach ($users as $user) {
+                    $user->options_json = \json_decode($user->options_json);
+                }
+                echo \json_encode($users);
+
+                ?>;
+
+        </script>
+    @endif
 </head>
 <body>
     <div id="app">

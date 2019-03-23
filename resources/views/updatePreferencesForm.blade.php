@@ -4,7 +4,7 @@
     <style>
         .mform {
             /*width: 800px;*/
-            height: 500px;
+            /*height: 500px;*/
             padding: 60px;
             border-radius: 5px;
 
@@ -42,10 +42,16 @@
             color: white;
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         }
+
+        #map-me {
+            width: 100%;
+            height: 200px;
+        }
     </style>
 
     <div class="container">
-        <form action="{{ route('updatePreferences') }}" method="POST" class="mform">
+
+        <form action="{{ route('updatePreferences') }}" method="POST" class="mform" id="mform">
             <h1>Ваши предпочтения:</h1>
             <br>
             <div class="faces">
@@ -55,21 +61,31 @@
             <br>
             <div class="form-group">
                 <label for="formControlRange">Кино</label>
-                <input type="range" name="cinema" class="form-control-range" value="{{ $preferences['cinema'] }}" min="-100" max="100">
+                <input type="range" name="cinema" id="cinema" class="form-control-range" value="{{ $preferences['cinema'] }}" min="-100" max="100">
             </div>
             <div class="form-group">
                 <label for="formControlRange">Еда</label>
-                <input type="range" name="food" class="form-control-range" value="{{ $preferences['food'] }}" min="-100" max="100">
+                <input type="range" name="food" id="food" class="form-control-range" value="{{ $preferences['food'] }}" min="-100" max="100">
             </div>
             <div class="form-group">
                 <label for="formControlRange">Прогулки</label>
-                <input type="range" name="walking" class="form-control-range" value="{{ $preferences['walking'] }}" min="-100" max="100">
+                <input type="range" name="walking" id="walking" class="form-control-range" value="{{ $preferences['walking'] }}" min="-100" max="100">
+            </div>
+            <div class="form-group">
+                <label for="formControlRange">Ваше местоположение</label>
+                <div id="map-me"></div>
+                <br>
+                <input type="text" class="form-control-range" id="real-coords-input" name="coords" value="<?php echo htmlspecialchars(\json_encode($preferences['coords'])) ?>">
+                <br>
+                <button class="btn mbtn" id="myPlace">Определить своё местоположение</button>
             </div>
             <br>
             <div class="form-group">
                 <button type="submit" class="btn mbtn">Сохранить</button>
             </div>
         </form>
+
+
     </div>
 
 @endsection
