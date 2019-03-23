@@ -1,4 +1,4 @@
-normalize = @(u) u/2 + 50;
+% normalize = @(u) u/2 + 50;
 
 [u1,u2] = meshgrid(-100:5:100);
 
@@ -15,4 +15,4 @@ logicsin = @(u1, u2) 50 * sin(pi*min(u1, u2)/200)+50;
 
 
 fit = logicsin(u1, u2);
-surf(u1norm, u2norm, fit);
+surf(u1, u2, fit);

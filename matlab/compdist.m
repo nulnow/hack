@@ -11,6 +11,6 @@ function distvec = compdist(user1, user2)
 % 
 % distvec = mlgs2d(u1norm, u2norm);
 
-logicsin = @(u1, u2) 50 * sin(pi*min(u1, u2)/200)+50;
+logicsin = @(x, y) 100 * (sin(pi/200*x)+1) .* (sin(pi/200*y)+1) / 4;
 distvec = logicsin(user1, user2);
 end
