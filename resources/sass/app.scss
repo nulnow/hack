@@ -8,6 +8,18 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import '../design/map/style/map.css';
+
+@import '../design/start/style/main.css';
+@import '../design/start/style/navigation.css';
+@import '../design/start/style/hot-news.css';
+@import '../design/start/style/navigation-mini.css';
+@import '../design/start/style/media.css';
+@import '../design/start/style/start.css';
+@import '../design/start/style/menu.css';
+
+@import '../design/map/style/map.css';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

@@ -61212,6 +61212,54 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/design/start/script/media.js":
+/*!************************************************!*\
+  !*** ./resources/design/start/script/media.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(window).ready(function () {
+  if ($(window).width() <= "480") {}
+
+  $("#menu-min").click(function () {
+    HideShowBar();
+  });
+  $("#close").click(function () {
+    HideShowBar();
+  });
+
+  function HideShowBar() {
+    $(".nav-mini").toggleClass("nav-mini-opened");
+    $(".nav-mini-content").toggleClass("nav-mini-content-opened");
+    $(".nav-mini-top").toggleClass("nav-mini-top-opened");
+    $(".nav-mini-footer").toggleClass("nav-mini-footer-opened");
+    $("#closeNavMini").toggle();
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/design/start/script/start.js":
+/*!************************************************!*\
+  !*** ./resources/design/start/script/start.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $("#menui").on("click", "a", function (event) {
+    event.preventDefault();
+    var id = $(this).attr('href'),
+        top = $(id).offset().top;
+    $('body,html').animate({
+      scrollTop: top
+    }, 500);
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -61549,6 +61597,10 @@ try {
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 } catch (e) {}
+
+__webpack_require__(/*! ../design/start/script/media */ "./resources/design/start/script/media.js");
+
+__webpack_require__(/*! ../design/start/script/start */ "./resources/design/start/script/start.js");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -61571,19 +61623,6 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo'
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
 
 /***/ }),
 
@@ -61681,8 +61720,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MATLAB\kopatich-hacker\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MATLAB\kopatich-hacker\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\steve\Documents\kop-hacker\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\steve\Documents\kop-hacker\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

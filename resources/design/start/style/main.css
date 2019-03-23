@@ -1,12 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-
-@import url("navigation.css");
-@import url("hot-news.css");
-@import url("navigation-mini.css");
-@import url("media.css");
-
 * {
   padding: 0;
   margin: 0;
