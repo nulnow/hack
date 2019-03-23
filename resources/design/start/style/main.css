@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+
+@import url("navigation.css");
+@import url("hot-news.css");
+@import url("navigation-mini.css");
+@import url("media.css");
+
+* {
+  padding: 0;
+  margin: 0;
+
+  font-family: Roboto;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
