@@ -12,3 +12,17 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.no-geo {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    padding: 5px 20px;
+
+    color: #fff;
+
+    border-top-right-radius: 5px;
+    background-color: rgba(255, 0, 2, 0.81);
+    opacity: 0.8;
+}
