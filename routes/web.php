@@ -20,9 +20,10 @@ Route::get('/find-pair', 'HomeController@findPair')->name('findPair');
 Route::get('/invites', 'HomeController@invites')->name('invites');
 Route::get('/invites/{invite}', 'HomeController@invite')->name('invite');
 
-Route::get('/send-invite/{userGettingInvite}', 'HomeController@sendInvite')->name('sendInvite');
+Route::post('/send-invite/{userGettingInvite}', 'HomeController@sendInvite')->name('sendInvite');
 
 Route::get('/accept-invite/{invite}', 'HomeController@acceptInvite')->name('acceptInvite');
 Route::get('/reject-invite/{invite}', 'HomeController@rejectInvite')->name('rejectInvite');
+Route::get('/delete-invite/{invite}', 'HomeController@deleteInvite')->name('deleteInvite');
 
 Route::view('/map-test', 'map');

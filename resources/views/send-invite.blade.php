@@ -2,15 +2,31 @@
 
 @section('content')
 
+    <script>
+        var whereToGo = `<?php
+            echo $whereToGo;
+        ?>`;
+        var pairLat = `<?php
+            echo $pairOptions->coords->lat;
+        ?>`;
+        var pairLng = `<?php
+            echo $pairOptions->coords->lng;
+        ?>`;
+
+        var userGettingInvitedId = <?php
+            echo $pair->id;?>;
+    </script>
+
     <div class="meet">
         <div class="meet-wrapper">
             <div class="people you">
                 <div class="people-wrapper">
                     <div class="container">
-                        <img style="height: 120px"
-                             src="{{ $user->img_src }}" />
+                        {{--<img--}}
+                            {{--style="height: 120px"--}}
+                            {{--src="{{ $user->img_src }}"--}}
+                            {{--class="people-preview" />--}}
                         <div class="people-name">{{ $user->name }}</div>
-                        <div class="people-status">Статус пользователя</div>
                         <div class="splitter"></div>
                         <h3>Пол</h3>
                         <div class="button gender">{{ $genderText }}</div>
@@ -52,16 +68,16 @@
                 </div>
             </div>
             <div id="mapContainer" class="map map-area">
-                <div id="map" style="width: 100%; height: 600px;"></div>
+                <div id="map" style="width: 100%; height: 400px;"></div>
                 <div class="map-info">
                     <div class="map-info-wrapper">
                         <div class="container">
                             <div class="map-info-title">Пара найдена</div>
-                            <div class="map-info-description">Предложите {{ $pair->name }} посетить место [place].</div>
+                            <div class="map-info-description">Предложите {{ $pair->name }} посетить место <span id="place">[place222]</span>.</div>
                         </div>
                         <div class="btn-container">
                             <a href="#" class="button _no">Нет</a>
-                            <a href="{{ route('sendInvite', ['user' => $pair->id]) }}" class="button _go">Отправить запрос!</a>
+                            <a id="sendInviteButton" href="{{ route('sendInvite', ['user' => $pair->id]) }}" class="button _go">Отправить запрос!</a>
                         </div>
                     </div>
                 </div>
@@ -69,12 +85,11 @@
             <div class="people apponent">
                 <div class="people-wrapper">
                     <div class="container">
-                        <img
-                            style="height: 120px"
-                            src="https://pp.userapi.com/c847018/v847018047/1b00e0/z4csP_yABg4.jpg"
-                            class="people-preview" />
+                        {{--<img--}}
+                            {{--style="height: 120px"--}}
+                            {{--src="{{ $pair->img_src }}"--}}
+                            {{--class="people-preview" />--}}
                         <div class="people-name">{{ $pair->name }}</div>
-                        <div class="people-status">Pair status</div>
                         <div class="splitter"></div>
                         <h3>Пол</h3>
                         <div class="button gender">{{ $pairGenderText }}</div>

@@ -23,7 +23,17 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->text('options_json')->nullable();
+            $table->string('options_json')->default(\json_encode([
+                'cinema' => 0,
+                'food' => 0,
+                'walking' => 0,
+                'gender' => 'n',
+                'lookingFor' => 'a',
+                'coords' => [
+                    "lat" => 59.93444135994904,
+                    "lng" => 30.312168158691463
+                ]
+            ]));
 
             $table->rememberToken();
             $table->timestamps();

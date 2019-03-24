@@ -9,9 +9,6 @@
 
     <title>Pinder.ru</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -62,7 +59,7 @@
             <div class="nav-container">
                 <div class="nav-left">
                     <div class="nav__item nav__logo">
-                        <h3>Pinder.ru</h3>
+                        <h3 id="logo"><a href="/" style="color: white; text-decoration: none;">Pinder.ru</a></h3>
                     </div>
                 </div>
                 <div class="nav-middle">
@@ -74,8 +71,9 @@
                             <div class="navigation-menu-item"><a href="{{ route('register') }}">Регистрация</a></div>
                         @else
                             <div class="navigation-menu-item"><a href="{{ route('welcome') }}">Найти</a></div>
-                            <div class="navigation-menu-item"><a href="{{ route('updatePreferences') }}">Профиль <small>({{ Auth::user()->name }})</small> </a></div>
-                            <div class="navigation-menu-item"><a href="{{ route('invites') }}">Приглашения</a></div>
+                            <div class="navigation-menu-item"><a href="{{ route('home') }}">Я приглашаю</a></div>
+                            <div class="navigation-menu-item"><a href="{{ route('updatePreferences') }}">Мои предпочтения <small>({{ Auth::user()->name }})</small> </a></div>
+                            <div class="navigation-menu-item"><a href="{{ route('invites') }}">Меня приглашают <small>({{ Auth::user()->countIncomingInvites() }})</small></a></div>
                             <div class="navigation-menu-item"><a href="/logout">Выход</a></div>
                         @endguest
                     </div>
@@ -102,5 +100,7 @@
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

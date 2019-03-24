@@ -42,8 +42,19 @@ class User extends Authenticatable
         return $this->hasMany('\App\Invite', 'to');
     }
 
+    public function outcomingInvites()
+    {
+        return $this->hasMany('\App\Invite', 'from');
+    }
+
     public function outcomingInvite()
     {
         return $this->hasOne('\App\Invite', 'from');
     }
+
+    public function countIncomingInvites()
+    {
+        return $this->incomingInvites->where('status', '<>', 2)->count();
+    }
+
 }

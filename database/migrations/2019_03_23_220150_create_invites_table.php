@@ -17,7 +17,8 @@ class CreateInvitesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('from');
             $table->integer('to');
-            $table->integer('status')->nullable(); // 1 - accepted, 2 - rejected
+            $table->integer('status')->default(0); // 0 - not viewed 1 - accepted, 2 - rejected
+            $table->string('place_json')->nullable();
             $table->timestamps();
         });
     }

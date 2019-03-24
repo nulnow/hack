@@ -11,7 +11,7 @@
             @endif
 
             @foreach($invites as $invite)
-                <a href="/map-test" class="list-group-item list-group-item-action"><span class="badge badge-secondary">New</span> {{ $invite->inviter->name }}</a>
+                <a href="{{ route('invite', ['invite' => $invite->id]) }}" class="list-group-item list-group-item-action"><span class="badge badge-secondary">New</span> {{ $invite->inviter->name }}</a>
             @endforeach
         </div>
     </div>

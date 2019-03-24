@@ -52,6 +52,10 @@
     <div class="container">
 
         <form action="{{ route('updatePreferences') }}" method="POST" class="mform" id="mform">
+            <div class="form-group">
+                <label for="name">Ваше имя:</label>
+                <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required>
+            </div>
             <h1>Ваши предпочтения:</h1>
             <br>
             <div class="faces">
@@ -86,6 +90,7 @@
             </div>
             <br>
             <br>
+            <!--
             <p>Кого ищем:</p>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="lookingFor" id="lookingForM" value="m" {{ $preferences['lookingFor'] === 'm' ? 'checked' : '' }}>
@@ -101,11 +106,12 @@
             </div>
             <br>
             <br>
+            -->
             <div class="form-group">
                 <label for="formControlRange">Ваше местоположение</label>
                 <div id="map-me"></div>
                 <br>
-                <input type="text" class="form-control-range" id="real-coords-input" name="coords" value="<?php echo htmlspecialchars(\json_encode($preferences['coords'])) ?>">
+                <input hidden type="text" class="form-control-range" id="real-coords-input" name="coords" value="<?php echo htmlspecialchars(\json_encode($preferences['coords'])) ?>">
                 <br>
                 <button class="btn mbtn" id="myPlace">Определить своё местоположение</button>
             </div>

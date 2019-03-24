@@ -70,10 +70,10 @@ class HomeController extends Controller
             'cinema' => 'required|min:-100|max:100',
             'food' => 'required|min:-100|max:100',
             'walking' => 'required|min:-100|max:100',
+            'name' => 'required',
             'gender' => 'required',
             'lookingFor' => 'required'
         ]);
-
 
         $options = \json_encode([
             'cinema' => $request->input('cinema'),
@@ -84,7 +84,7 @@ class HomeController extends Controller
             'lookingFor' => $request->input('lookingFor')
         ]);
 
-
+        $user->name = $request->input('name');
 
         $user->options_json = $options;
 
@@ -121,17 +121,32 @@ class HomeController extends Controller
             $table[] = [$u->id, $diffCinema, $diffFood, $diffWalking];
         }
 
-        //                user id       max value
-        $maxRow = [    $table[0][0],     $table[0][1]     ];
+        //                user id       max value        index
+        $maxRow = [    $table[0][0],     $table[0][1],     1];
         foreach ($table as $row) {
             $r = [$row[1], $row[2], $row[3]];
             $maxValue = max($r);
+            $index = array_search($maxValue, $r);
             if ($maxValue > $maxRow[1]) {
-                $maxRow = [$row[0], $maxValue];
+                $maxRow = [$row[0], $maxValue, $index + 1];
             }
         }
 
         $pair = \App\User::find($maxRow[0]);
+
+        $whereToGo = 'park';
+
+        switch ($maxRow[2]) {
+            case 1:
+                $whereToGo = 'cinema';
+                break;
+            case 2:
+                $whereToGo = 'cafe';
+                break;
+            case 3:
+                $whereToGo = 'park';
+                break;
+        }
 
         $options = \json_decode($user->options_json);
         $pairOptions = \json_decode($pair->options_json);
@@ -156,32 +171,55 @@ class HomeController extends Controller
             ->withPairOptions($pairOptions)
             ->withPair($pair)
             ->withGenderText($genderText)
-            ->withPairGenderText($pairGenderText);
+            ->withPairGenderText($pairGenderText)
+            ->withWhereToGo($whereToGo);
 
     }
 
     public function invites()
     {
         $user = Auth::user();
-        $invites = \App\Invite::where('to', $user->id)->get();
+        $invites = \App\Invite::where([
+            ['to', '=', $user->id],
+            ['status', '<>', 2]
+        ])->get();
         return view('invites')->withInvites($invites);
     }
 
     public function invite(\App\Invite $invite)
     {
         $user = Auth::user();
+        $pair = $invite->inviter;
+
         $options = \json_decode($user->options_json);
+        $pairOptions = \json_decode($pair->options_json);
+
         $gender = $options->gender;
+        $pairGender = $pairOptions->gender;
+
         $genderText = '???';
+        $pairGenderText = '???';
 
 
         if ($gender === 'm') $genderText = 'Мужской';
         if ($gender === 'f') $genderText = 'Женский';
         if ($gender === 'n') $genderText = 'Нет';
 
+        if ($pairGender === 'm') $pairGenderText = 'Мужской';
+        if ($pairGender === 'f') $pairGenderText = 'Женский';
+        if ($pairGender === 'n') $pairGenderText = 'Нет';
+
+        $place = \json_decode($invite->place_json);
+
         return view('invite')
             ->withInvite($invite)
+            ->withPlace($place)
             ->withUser($user)
+            ->withUserOptions($options)
+            ->withPairOptions($pairOptions)
+            ->withPair($pair)
+            ->withGenderText($genderText)
+            ->withPairGenderText($pairGenderText)
             ->withGenderText($genderText);
     }
 
@@ -204,15 +242,33 @@ class HomeController extends Controller
     public function sendInvite(\App\User $userGettingInvite)
     {
         $user = Auth::user();
-        $ivite = new \App\Invite();
-        $ivite->from = $user->id;
-        $ivite->to = $userGettingInvite->id;
 
-        $ivite->save();
+        $lat = request('lat');
+        $lng = request('lng');
+        $title = request('title');
 
-        session()->flash('message', json_encode(['type' => 'success', 'text' => 'Приглашение было отправлено!']));
+        \App\Invite::where('from', $user->id)->delete();
 
-        return redirect()->route('home');
+        $invite = new \App\Invite();
+        $invite->from = $user->id;
+        $invite->to = $userGettingInvite->id;
+
+        $invite->place_json = \json_encode([
+            'lat' => $lat,
+            'lng' => $lng,
+            'title' => $title
+        ]);
+
+        $invite->save();
+
+        return 'ok';
+    }
+
+    public function deleteInvite(\App\Invite $invite)
+    {
+        $invite->delete();
+        session()->flash('message', json_encode(['type' => 'warning', 'text' => 'Приглашение было удалено!']));
+        return back();
     }
 }
 

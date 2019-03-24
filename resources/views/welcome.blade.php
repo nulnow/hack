@@ -7,7 +7,7 @@
                     <div class="main-start-container">
                         <div id="menui" class="main-start-container-wrapper">
                             <div class="container" style="display: flex; flex-flow: column; justify-content: center; align-items: center">
-                                <h1><b>Pinder.ru - как тиндер, только лучше</b></h1>
+                                <h1><b>Pinder.ru - как тиндер, только по интересам</b></h1>
                                 <h2>Поиск людей по интересам</h2>
                                 <br>
                                 <br>
@@ -41,8 +41,7 @@
                                     <img style="background-color: rgba(0,0,0,0);" class="choose-item-image" src="https://image.flaticon.com/icons/png/512/33/33622.png" />
                                     <br>
                                     <h4 class="choose-item-title">Подбор подходящего места для встречи</h4>
-                                    <h5 class="choose-item-description">Мы подскажем наиболее подходящее место для встречи
-                                        и проложим до него маршрут.</h5>
+                                    <h5 class="choose-item-description">Мы подберем наиболее подходящее место для встречи.</h5>
                                 </div>
                             </div>
                         </div>
