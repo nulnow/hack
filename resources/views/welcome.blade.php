@@ -17,7 +17,7 @@
                                         color: #212121 !important;
                                     }
                                 </style>
-                                <a style="width: 100%" href="/search" class="main-btn">Найти!</a>
+                                <a style="width: 100%" href="{{ route('findPair') }}" class="main-btn">Найти!</a>
                                 <br>
                                 <a style="color: white; text-decoration: none" href="#search">Подробнее</a>
                             </div>

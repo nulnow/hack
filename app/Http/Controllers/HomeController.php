@@ -131,7 +131,33 @@ class HomeController extends Controller
             }
         }
 
-        return \App\User::find($maxRow[0]);
+        $pair = \App\User::find($maxRow[0]);
+
+        $options = \json_decode($user->options_json);
+        $pairOptions = \json_decode($pair->options_json);
+
+        $gender = $options->gender;
+        $pairGender = $pairOptions->gender;
+
+        $genderText = '???';
+        $pairGenderText = '???';
+
+        if ($gender === 'm') $genderText = 'Мужской';
+        if ($gender === 'f') $genderText = 'Женский';
+        if ($gender === 'n') $genderText = 'Нет';
+
+        if ($pairGender === 'm') $pairGenderText = 'Мужской';
+        if ($pairGender === 'f') $pairGenderText = 'Женский';
+        if ($pairGender === 'n') $pairGenderText = 'Нет';
+
+        return view('send-invite')
+            ->withUser($user)
+            ->withUserOptions($userOptions)
+            ->withPairOptions($pairOptions)
+            ->withPair($pair)
+            ->withGenderText($genderText)
+            ->withPairGenderText($pairGenderText);
+
     }
 
     public function invites()
@@ -157,6 +183,36 @@ class HomeController extends Controller
             ->withInvite($invite)
             ->withUser($user)
             ->withGenderText($genderText);
+    }
+
+    public function acceptInvite(\App\Invite $invite)
+    {
+        $invite->status = 1;
+        $invite->save();
+
+        return 'invite accepted';
+    }
+
+    public function rejectInvite(\App\Invite $invite)
+    {
+        $invite->status = 2;
+        $invite->save();
+
+        return 'invite rejected';
+    }
+
+    public function sendInvite(\App\User $userGettingInvite)
+    {
+        $user = Auth::user();
+        $ivite = new \App\Invite();
+        $ivite->from = $user->id;
+        $ivite->to = $userGettingInvite->id;
+
+        $ivite->save();
+
+        session()->flash('message', json_encode(['type' => 'success', 'text' => 'Приглашение было отправлено!']));
+
+        return redirect()->route('home');
     }
 }
 

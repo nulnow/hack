@@ -61,11 +61,6 @@
         <nav>
             <div class="nav-container">
                 <div class="nav-left">
-                    <div class="nav__item">
-                        <button class="nav__item-btn menuID">
-                            <i class="nav__item-icon material-icons">menu</i>
-                        </button>
-                    </div>
                     <div class="nav__item nav__logo">
                         <h3>Pinder.ru</h3>
                     </div>
@@ -78,9 +73,10 @@
                             <div class="navigation-menu-item"><a href="{{ route('login') }}">Вход</a></div>
                             <div class="navigation-menu-item"><a href="{{ route('register') }}">Регистрация</a></div>
                         @else
+                            <div class="navigation-menu-item"><a href="{{ route('welcome') }}">Найти</a></div>
                             <div class="navigation-menu-item"><a href="{{ route('updatePreferences') }}">Профиль <small>({{ Auth::user()->name }})</small> </a></div>
                             <div class="navigation-menu-item"><a href="{{ route('invites') }}">Приглашения</a></div>
-                            <div class="navigation-menu-item">Выход</div>
+                            <div class="navigation-menu-item"><a href="/logout">Выход</a></div>
                         @endguest
                     </div>
                 </div>
@@ -91,6 +87,7 @@
         <br>
 
         @if(session()->has('message'))
+            <br><br><br>
             <div class="container">
                 <div class="alert alert-{{ json_decode(session()->get('message'), true)['type'] }} alert-dismissible fade show" role="alert">
                     {{ json_decode(session()->get('message'), true)['text'] }}

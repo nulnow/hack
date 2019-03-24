@@ -17,7 +17,7 @@ class CreateInvitesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('from');
             $table->integer('to');
-            $table->boolean('rejected')->nullable();
+            $table->integer('status')->nullable(); // 1 - accepted, 2 - rejected
             $table->timestamps();
         });
     }
