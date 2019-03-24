@@ -804,7 +804,8 @@ h3 {
     height: calc(100vh);
 
     background: url('https://avatars.mds.yandex.net/get-pdb/909209/40096357-e368-428b-8b68-18edef8807df/s1200');
-    background-color: #b6b6b6;
+    background-size: cover;
+    /*background-color: #b6b6b6;*/
 }
 
 .main-start-container-wrapper {
