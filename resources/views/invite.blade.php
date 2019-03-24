@@ -27,10 +27,9 @@
             <div class="people you">
                 <div class="people-wrapper">
                     <div class="container">
-                        {{--<img--}}
-                            {{--style="height: 120px"--}}
-                            {{--src="{{ $user->img_src }}"--}}
-                            {{--class="people-preview" />--}}
+                        <img
+                            src="https://gladstoneentertainment.com/wp-content/uploads/2018/08/blank-portrait.png"
+                            class="people-preview" />
                         <div class="people-name">{{ $user->name }}</div>
                         <div class="splitter"></div>
                         <h3>Пол</h3>
@@ -92,10 +91,9 @@
             <div class="people apponent">
                 <div class="people-wrapper">
                     <div class="container">
-                        {{--<img--}}
-                            {{--style="height: 120px"--}}
-                            {{--src="{{ $pair->img_src }}"--}}
-                            {{--class="people-preview" />--}}
+                        <img
+                            src="https://gladstoneentertainment.com/wp-content/uploads/2018/08/blank-portrait.png"
+                            class="people-preview" />
                         <div class="people-name">{{ $pair->name }}</div>
                         <div class="splitter"></div>
                         <h3>Пол</h3>

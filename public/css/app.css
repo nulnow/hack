@@ -51,7 +51,7 @@
 
 .people-name,
 .people-preview {
-    margin-bottom: 8px;
+
 }
 
 .map-info-title,
@@ -89,8 +89,10 @@
 .people-preview {
     display: flex;
 
+    margin-top: 0px;
+
     width: 100%;
-    height: 128px;
+    height: 160px;
 
     border-radius: 8px;
 
@@ -189,7 +191,7 @@
 }
 
 .people-interests-item-title {
-    margin-bottom: 8px;
+    /*margin-bottom: 8px;*/
 }
 
 .people-interests-item {
@@ -267,7 +269,7 @@
 
     padding: 4px;
 
-    margin: 8px 0;
+    /*margin: 8px 0;*/
 
     display: flex;
 
@@ -276,7 +278,7 @@
 
 .splitter {
     border-top: 1px solid #bdbdbd;
-    margin: 32px 0; 
+    margin: 20px 0;
 }
 
 .apponent {
@@ -297,25 +299,25 @@
     grid-area: map;
 }
 
-@media screen and (max-width: 1024px) {
-    .meet-wrapper {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-areas: "map" "apponent";
-    }
+/*@media screen and (max-width: 1024px) {*/
+    /*.meet-wrapper {*/
+        /*display: grid;*/
+        /*grid-template-columns: repeat(1, 1fr);*/
+        /*grid-template-areas: "map" "apponent";*/
+    /*}*/
 
-    .people {
-        box-shadow: none;
-    }
+    /*.people {*/
+        /*box-shadow: none;*/
+    /*}*/
 
-    .you {
-        display: none;
-    }
-    
-    .map-area {
-        height: -webkit-fill-available;
-    }
-}
+    /*.you {*/
+        /*display: none;*/
+    /*}*/
+    /**/
+    /*.map-area {*/
+        /*height: -webkit-fill-available;*/
+    /*}*/
+/*}*/
 * {
   padding: 0;
   margin: 0;
